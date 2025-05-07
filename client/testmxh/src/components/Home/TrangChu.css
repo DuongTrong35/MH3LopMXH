@@ -1,3 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 .containerhome{
     width: 100%;
     height: 100%;
@@ -107,24 +119,25 @@
     margin-top: 2px;
 }
 .Bannerright ul li{
-    padding: 10px;
+    /* padding: 10px; */
     list-style: none;
-    width: 40px !important;
-    height: 40px !important;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: #f2f3f5;
     margin-right: 8px;
 }
 .Bannerright ul li img{
-    margin-bottom: 10px;
-
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
+    margin-left: 8px;
+    margin-top: 10px;
     border-radius: 50%;
     object-fit: cover; 
 }
 
 .Bannerrightanh{
+    position: relative;
     margin-top: 10px;
     width: 38px;
     height: 38px;
@@ -142,13 +155,13 @@
     height: 12px;
     border-radius: 50%;
     background-color: #f2f3f5;
-    left: 1485px;
-        top: 35px;
+    left: 27px;
+    top:27px;
     margin: 0;
 }
 .picavatedown{
     position: absolute;
-    left: 4%;
+    left: 17%;
     top: 1px;
     margin: 0;
 }
@@ -192,7 +205,7 @@
     align-items: center;
     margin-bottom: 10px;
 }
-.post-header .avatar {
+.post-header .avatarhomewriter {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -248,8 +261,7 @@ height: 50px;
     cursor: pointer;
 }
 .HomeCenterTraiTren ul li p{
-    line-height: 50px;
-
+    line-height: 52px;
     font-size: 14px;
     font-weight: bold;
 }
@@ -262,7 +274,7 @@ height: 50px;
     background-color:#DDDDDD	;
 }
 .HomeCenter .HomeCenterTrai .HomeCenterTraiTren .menu1{
-    background-image: url(../../assets/Images/Icons/iconmenu.png);
+    background-image: url(../../assets/images/Icons/iconmenu.png);
     background-position: 0 -333px;
     background-size: auto;
     width: 36px;
@@ -273,7 +285,7 @@ height: 50px;
     margin-right: 10px;
 }
 .HomeCenter .HomeCenterTrai .HomeCenterTraiTren .menu2{
-    background-image: url(../../assets/Images/Icons/iconmenu.png);
+    background-image: url(../../assets/images/Icons/iconmenu.png);
     background-position: 0 -481px;
     background-size: auto;
     width: 36px;
@@ -284,7 +296,7 @@ height: 50px;
     margin-right: 10px;
 }
 .HomeCenter .HomeCenterTrai .HomeCenterTraiTren .menu3{
-    background-image: url(../../assets/Images/Icons/iconmenu.png);
+    background-image: url(../../assets/images/Icons/iconmenu.png);
     background-position: 0 -185px;
     background-size: auto;
     width: 36px;
@@ -296,7 +308,7 @@ height: 50px;
 }
 
 .HomeCenter .HomeCenterTrai .HomeCenterTraiTren .menu4{
-    background-image: url(../../assets/Images/Icons/iconmenu.png);
+    background-image: url(../../assets/images/Icons/iconmenu.png);
     background-position: 0 -37px;
     background-size: auto;
     width: 36px;
@@ -308,7 +320,7 @@ height: 50px;
 }
 
 .HomeCenter .HomeCenterTrai .HomeCenterTraiTren .menu5{
-    background-image: url(../../assets/Images/Icons/iconmenu.png);
+    background-image: url(../../assets/images/Icons/iconmenu.png);
     background-position: 0 -555px;
     background-size: auto;
     width: 36px;
@@ -320,7 +332,7 @@ height: 50px;
 }
 
 .HomeCenter .HomeCenterTrai .HomeCenterTraiTren .menu6{
-    background-image: url(../../assets/Images/Icons/iconmenu.png);
+    background-image: url(../../assets/images/Icons/iconmenu.png);
     background-position: 0 -444px;
     background-size: auto;
     width: 36px;
@@ -502,13 +514,14 @@ height: 50px;
     height: 60px;
     background-color: #f8f9fb;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .modal-title p{
     margin: 0;
-    line-height: 70px;
+    line-height: 60px;
     font-size: 20px;
     font-weight: 700;
+    margin-left: 16px;
 }
 .gachngang::before{
     content: '';
@@ -568,28 +581,41 @@ height: 50px;
 }
 .modaladdpost{
     width: 470px;
-    height: 70px;
+    height: 50px;
     border-radius: 5px;
     background: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-left: 16px;
     /* margin-top: 10px; */
+    display: flex;
 }
-
+.modaladdpostcover .modalpostmenu ul{
+    display: flex;
+    list-style: none;
+}
+.modaladdpostcover .modalpostmenu{
+    margin-left: 30px;
+}
+.modaladdpostcover .modalpostmenu li{
+    margin-top: 10px;
+    margin-right: 10px;
+}
 .modaladdpostcover .modaladdpost p{
-    margin:0;
+    margin-left: 10px;
+    margin-top: 10px;
+    /* margin:0; */
 }
 
 .modalbamdangcover{
-    height: 70px;
+    height: 50px;
     background: white;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 .modalbamdangcover button{
-    margin-top: 20px;
-    width: 444px;
+    /* margin-top: 20px; */
+    width: 470px;
     height: 36px;
     background-color: blue;
     padding: 0;
@@ -611,7 +637,8 @@ height: 50px;
     margin-left: 10px;
     display: flex;
  }
- .postitem .postitemup .avatar {
+ .postitem .postitemup .avatarpostitemup{
+    position:relative;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -738,3 +765,235 @@ height: 50px;
     background-color: red;
     
 }
+
+.modalprivacy{
+    width: 503px;
+    height: 515px;
+    /* background-color: red; */
+    background-color: white;
+    position: relative;
+    z-index: 3;
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 80vh;
+    overflow-y: auto;
+    transition: max-height 0.3s ease-in-out;
+}
+.modalprivacy .modalintroduce .modalintroducetitleup .titleup1{
+    margin-top: 15px;
+    margin-left: 16px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+.modalprivacy .modalintroduce .modalintroducetitleup .titleup2{
+    margin-left: 15px;
+    margin-bottom: 0;
+    color: #84878b;
+
+}
+.modalprivacy .modalintroduce .modalintroducetitleup .titleup3{
+    margin-left: 15px;
+    margin-bottom: 0;
+    color: #84878b;
+
+}
+.modalprivacy .modalintroduce .modalintroducetitledown{
+    margin-top: 15px;
+    margin-left: 15px;
+    color: #84878b;
+
+}
+.modalprivacy .modalintroduce .modalintroducetitledown .modalintroducetitledowncover{
+    display: flex;
+    margin-bottom: 0;
+    height: 20px;
+}
+.modalprivacy .modalintroduce .modalintroducetitledown .titledowntmp{
+    margin: 0;
+    font-weight: 600;
+    color: #84878b;
+}
+.modalprivacy .modalintroduce .modalintroducetitledown .titledown1{
+    margin-bottom: 0;
+    color: #84878b;
+}
+.modalmenuprivate .menuprivateleft .menuprivateicons{
+    margin-top: 6px;
+    margin-left: 9px;
+    width: 60px;
+    height: 60px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #e2e5e9;
+}
+.modalmenuprivate .menuprivateleft .menuprivateicons .menuprivateicon{
+    margin-left: 17px;
+    margin-top: 16px;
+}
+.modalmenuprivate ul{
+    padding-left: 0;
+}
+.modalmenuprivate ul li{
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    cursor: pointer;
+}
+.modalmenuprivate ul li .menuprivatewrite{
+    width: 266px;
+    margin-top: 10px;
+    margin-left: 14px;
+}
+.modalmenuprivate ul li .menuprivatewrite .menuprivatewriteup{
+    margin-bottom: 0;
+}
+.modalmenuprivate ul li .menuprivatewrite .menuprivatewritedown{
+    margin-bottom: 0;
+}
+.modalmenuprivate ul li .menuprivatetick{
+    margin-left: 89px;
+    margin-top: 20px;
+    height: 20px;
+}
+input[type="radio"] {
+    transform: scale(1.6);
+    /* margin-right: 15px; */
+  }
+  .modalmenuprivate ul li:hover{
+        background-color: #f0f2f5;
+  }
+
+.modaltitleback{
+    margin-top: 12px;
+    margin-left: 16px;
+    width: 36px;
+    height: 36px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #e2e5e9;
+    cursor: pointer;
+}
+.modaltitleback img{
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+.modalmenuprivatebutton{
+    display: flex;
+    justify-content: end;
+}
+.buttonhuy{
+    height: 24px;
+    margin-top: 5px;
+    margin-right: 24px;
+    cursor: pointer;
+}
+.buttonhuy p{
+    color: blue;
+}
+.buttonfinish button{
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    /* border-radius: 20px; */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+/* ------- */
+.screenmess{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    /* overflow: hidden; */
+    display: flex;
+    align-items: normal;
+    justify-content: flex-end;
+}
+.screenmesscover{
+    /* width: 370px; */
+    width: 395px;
+    height: 410px;
+    /* margin: 0; */
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 52px;
+    margin-right: 40px;
+    border-radius: 3%;
+    overflow: hidden;
+}
+.screenmessbanner{
+    display: flex;
+}
+.screenmessbanner .screenmessbannerallicon{
+    display: flex;
+    width: 108px;
+    margin-left: 110px;
+    justify-content: end;
+    height: 28px;
+    margin-top: 15px;
+}
+.screenmessbanner p{
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-left: 18px;
+}
+.screenmessbannerallicon .screenmessbannermoreicon{
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.screenmessbannerallicon .screenmessbannerseeall{
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.screenmessbannerallicon .screenmessbannernewchat{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.searchboxmess {
+    display: flex;
+    align-items: center;
+    background: #f0f2f5;
+    padding: 5px 12px;
+    border-radius: 50px;
+    margin-left: 22px;
+    width: 320px;
+}
+
+.searchboxmess i {
+    color: gray;
+    margin-right: 8px;
+}
+
+.searchboxmess input {
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 16px;
+}
+.screenmess_overlay{
+    /* position: absolute; */
+    width: 80%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    z-index: 2;
+}
+.modalclose{   margin-top: 12px;
+    margin-left: 16px;
+    width: 36px;
+    height: 36px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #e2e5e9;
+    cursor: pointer;}
