@@ -130,18 +130,18 @@ function Trangchu() {
   //     })
   //     .catch((error) => console.error("Lỗi khi lấy bài viết:", error));
   // }, []);
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     try {
-  //       const response = await axios.get(`http://localhost:8080/api/profile/${userId}`);
-  //       // const response = await axios.get("http://localhost:8080/post"); // nhớ đúng URL backend bạn nhé
-  //       setDsBaiViet(response.data.posts); // response.data.posts là mảng bài viết
-  //     } catch (error) {
-  //       console.error("Lỗi khi lấy danh sách bài viết:", error);
-  //     }
-  //   };
-  //   fetchPosts();
-  // }, []);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/profile/${userId}`);
+        // const response = await axios.get("http://localhost:8080/post"); // nhớ đúng URL backend bạn nhé
+        setDsBaiViet(response.data.posts); // response.data.posts là mảng bài viết
+      } catch (error) {
+        console.error("Lỗi khi lấy danh sách bài viết:", error);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   // const handleDangBai = async () => {
   //   if (!noidung.trim()) return; // Kiểm tra nội dung không rỗng
