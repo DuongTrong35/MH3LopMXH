@@ -11,8 +11,16 @@ public class PostDTO {
     private int comments;
     private int shares;
     private UserProfileDTO user;
-    
-    // Getters and Setters
+    private long iduser;
+    public long getIduser() {
+		return iduser;
+	}
+
+	public void setIduser(long iduser) {
+		this.iduser = iduser;
+	}
+
+	// Getters and Setters
     public Long getId() {
         return id;
     }

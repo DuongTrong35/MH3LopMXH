@@ -18,3 +18,4 @@ public interface PostUserRepository extends JpaRepository<PostUser, Long> {
 
     List<PostUser> findAllByPost(Post post);
 }
+

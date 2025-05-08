@@ -38,6 +38,8 @@ import hthanh from "../../assets/images/thanh.jpg";
 import close from "../../assets/images//Icons/closew.svg";
 import cover from "../../assets/Images/Icons/testa.jpg";
 import avatar from "../../assets/Images/Icons/testa.jpg";
+import qc1 from "../../assets/Images/Imgkhac/qc1.jpg";
+import qc2 from "../../assets/Images/Imgkhac/lq.jpg";
 
 import axios from "axios";
 function Trangchu() {
@@ -51,19 +53,21 @@ function Trangchu() {
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
   const defaultCoverSrc = cover;
-    const defaultAvatarSrc = avatar;
+  const defaultAvatarSrc = avatar;
   const userId = 4638422354641785; // ID người dùng bạn đã cung cấp
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
         setLoading(true);
         // Gọi API để lấy dữ liệu profile
-        const response = await axios.get(`http://localhost:8080/api/profile/${userId}`);
+        const response = await axios.get(
+          `http://localhost:8080/api/profile/${userId}`
+        );
         setProfileData(response.data);
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching profile data:', err);
-        setError('Không thể tải dữ liệu. Vui lòng thử lại sau.');
+        console.error("Error fetching profile data:", err);
+        setError("Không thể tải dữ liệu. Vui lòng thử lại sau.");
         setLoading(false);
       }
     };
@@ -133,7 +137,9 @@ function Trangchu() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/profile/${userId}`);
+        const response = await axios.get(
+          `http://localhost:8080/api/profile/${userId}`
+        );
         // const response = await axios.get("http://localhost:8080/post"); // nhớ đúng URL backend bạn nhé
         setDsBaiViet(response.data.posts); // response.data.posts là mảng bài viết
       } catch (error) {
@@ -142,25 +148,171 @@ function Trangchu() {
     };
     fetchPosts();
   }, []);
-
   // const handleDangBai = async () => {
-  //   if (!noidung.trim()) return; // Kiểm tra nội dung không rỗng
+  //   if (!noidung.trim()) return;
+  //   // const linkanh=anhDaTai;
   //   const baiviet = {
-  //     tennguoidung: user.tennguoidung,
-  //     noidung,
-  //     thoigian: new Date().toISOString(),
+  //     iduser: userId,
+  //     content: noidung,
+  //     imageUrl:anhDaTai
   //   };
   //   try {
-  //     const response = await fetch("http://localhost:8080/api/baiviet", {
+  //     const response = await fetch(`http://localhost:8080/api/home/postwritepic`, {
   //       method: "POST",
   //       headers: { "Content-Type": "application/json" },
   //       body: JSON.stringify(baiviet),
   //     });
+
+  //     const rawText = await response.text();
+  //     // console.log("Phản hồi từ backend:", rawText);
+  //     if (response.ok) {
+  //       try {
+  //         const newPost = JSON.parse(rawText);
+  //         // const newPost = await response.json();
+  //         // console.log("Bài viết mới từ server:", newPost);
+  //         setDsBaiViet([newPost, ...dsBaiViet]);
+  //         setNoidung("");
+  //         setHienModal(false);
+  //       } catch (jsonError) {
+  //         console.error("JSON không hợp lệ:", jsonError);
+  //       }
+  //     } else {
+  //       console.error("Server trả lỗi:", response.status);
+  //     }
+  //   } catch (error) {
+  //     console.error("Lỗi khi đăng bài:", error);
+  //   }
+  // };
+  const handleDangBai = async () => {
+    if (!noidung.trim()) return;
+    // const linkanh=anhDaTai;
+    const baiviet = {
+      iduser: userId,
+      content: noidung,
+      // imageUrl:anhDaTai
+    };
+    try {
+      const response = await fetch(`http://localhost:8080/api/home/postwrite`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(baiviet),
+      });
+
+      const rawText = await response.text();
+      // console.log("Phản hồi từ backend:", rawText);
+      if (response.ok) {
+        try {
+          const newPost = JSON.parse(rawText);
+          // const newPost = await response.json();
+          // console.log("Bài viết mới từ server:", newPost);
+          setDsBaiViet([newPost, ...dsBaiViet]);
+          setNoidung("");
+          setHienModal(false);
+        } catch (jsonError) {
+          console.error("JSON không hợp lệ:", jsonError);
+        }
+      } else {
+        console.error("Server trả lỗi:", response.status);
+      }
+    } catch (error) {
+      console.error("Lỗi khi đăng bài:", error);
+    }
+  };
+  // const handleDangBai = async () => {
+  //   if (!noidung.trim()) return;
+  //   // const linkanh=anhDaTai;
+  //   if(anhDaTai==""){
+  //   const baiviet = {
+  //     iduser: userId,
+  //     content: noidung
+  //     // imageUrl:anhDaTai
+  //   };
+  //   try {
+  //     const response = await fetch(`http://localhost:8080/api/home/postwrite`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(baiviet),
+  //     });
+
+  //     const rawText = await response.text();
+  //     // console.log("Phản hồi từ backend:", rawText);
+  //     if (response.ok) {
+  //       try {
+  //         const newPost = JSON.parse(rawText);
+  //         // const newPost = await response.json();
+  //         // console.log("Bài viết mới từ server:", newPost);
+  //         setDsBaiViet([newPost, ...dsBaiViet]);
+  //         setNoidung("");
+  //         setHienModal(false);
+  //       } catch (jsonError) {
+  //         console.error("JSON không hợp lệ:", jsonError);
+  //       }
+  //     } else {
+  //       console.error("Server trả lỗi:", response.status);
+  //     }
+  //   } catch (error) {
+  //     console.error("Lỗi khi đăng bài:", error);
+  //   }
+  // }else{
+  //     const baiviet2 = {
+  //       iduser: userId,
+  //       content: noidung,
+  //       imageUrl:anhDaTai
+  //     };
+  //     try {
+  //       const response = await fetch(`http://localhost:8080/api/home/postwritepic`, {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(baiviet2),
+  //       });
+
+  //       const rawText = await response.text();
+  //       // console.log("Phản hồi từ backend:", rawText);
+  //       if (response.ok) {
+  //         try {
+  //           const newPost = JSON.parse(rawText);
+  //           // const newPost = await response.json();
+  //           // console.log("Bài viết mới từ server:", newPost);
+  //           setDsBaiViet([newPost, ...dsBaiViet]);
+  //           setNoidung("");
+  //           setHienModal(false);
+  //         } catch (jsonError) {
+  //           console.error("JSON không hợp lệ:", jsonError);
+  //         }
+  //       } else {
+  //         console.error("Server trả lỗi:", response.status);
+  //       }
+  //     } catch (error) {
+  //       console.error("Lỗi khi đăng bài:", error);
+  //     }
+  //   }
+  // };
+
+  // const handleDangBai = async () => {
+  //   if (!noidung.trim()) return;
+  //   // const userbd = {
+  //   //   id: userId,
+
+  //   // };
+  //   const baiviet = {
+  //     iduser:userId,
+  //     content: noidung,
+  //   };
+
+  //   try {
+  //     fetch(`http://localhost:8080/api/home/postwrite`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(baiviet),
+  //     });
+
   //     if (response.ok) {
   //       const newPost = await response.json();
-  //       setDsBaiViet([newPost, ...dsBaiViet]); // Cập nhật danh sách bài viết
-  //       setNoidung(""); // Reset nội dung sau khi đăng
-  //       setHienModal(false); // Ẩn modal
+  //       setDsBaiViet([newPost, ...dsBaiViet]);
+  //       setNoidung("");
+  //       setHienModal(false);
+  //     } else {
+  //       console.error("Server trả lỗi:", response.status);
   //     }
   //   } catch (error) {
   //     console.error("Lỗi khi đăng bài:", error);
@@ -181,8 +333,14 @@ function Trangchu() {
         reader.readAsDataURL(file);
       }
     }
+    // console.log(anhDaTai)
   };
-
+  useEffect(() => {
+    // Mỗi khi anhDaTai thay đổi, sẽ in giá trị mới của anhDaTai
+    if (anhDaTai) {
+      console.log(anhDaTai); // Đây sẽ in giá trị ảnh sau khi đã được lưu trữ vào anhDaTai
+    }
+  }, [anhDaTai]); // Chạy mỗi khi anhDaTai thay đổi
   // const handleDangBai = async () => {
   //   if (!noidung.trim()) return; // Kiểm tra nội dung không rỗng
   //   const baiviet = {
@@ -363,10 +521,11 @@ function Trangchu() {
           <div className="modal_body" onClick={(e) => e.stopPropagation()}>
             <div className="modal-title">
               <p>Tạo bài viết</p>
-               <div className="modaltitleback"
-                            onClick={() => setHienModal(false)}
+              <div
+                className="modaltitleback"
+                onClick={() => setHienModal(false)}
               >
-              <img src={close} alt="" />
+                <img src={close} alt="" />
               </div>
             </div>
 
@@ -377,14 +536,15 @@ function Trangchu() {
                 <img
                   // src={`/Images/Imgbia/${user?.tenanhdaidien || "default.png"}`}
                   // src={hthanh}
-                  src={userInfo.profileImageUrl || defaultAvatarSrc} 
-
+                  src={userInfo.profileImageUrl || defaultAvatarSrc}
                   className="picavatatcn"
                   alt="Ảnh bìa"
                 />
               </div>
               <div className="modalinforuseahaichucnang">
-                <p>{userInfo.firstName} {userInfo.lastName}</p>
+                <p>
+                  {userInfo.firstName} {userInfo.lastName}
+                </p>
                 <button
                   className="cong-khai-btn"
                   onClick={() => {
@@ -414,7 +574,6 @@ function Trangchu() {
                     ? `${userInfo.firstName} ${userInfo.lastName} ơi, bạn đang nghĩ gì thế?`
                     : "Đang tải..."
                 }
-                
                 value={noidung}
                 onChange={(e) => setNoidung(e.target.value)}
                 onPaste={handlePaste}
@@ -445,7 +604,7 @@ function Trangchu() {
             </div>
 
             <div className="modalbamdangcover">
-              <button >Đăng</button>
+              <button onClick={handleDangBai}>Đăng</button>
             </div>
           </div>
         </div>
@@ -512,8 +671,7 @@ function Trangchu() {
             <img
               // src={"/Images/Icons/testa.jpg"}
               // src={hthanh}
-              src={userInfo.profileImageUrl || defaultAvatarSrc} 
-
+              src={userInfo.profileImageUrl || defaultAvatarSrc}
               className="picavata"
               onClick={hienkhunganh}
             />
@@ -531,10 +689,14 @@ function Trangchu() {
                 <div className="centraiavatar">
                   {/* <img src={hthanh} /> */}
                   {/* src={userInfo.profileImageUrl || defaultAvatarSrc}  */}
-                  <img                 src={userInfo.profileImageUrl || defaultAvatarSrc} 
- alt="" />
+                  <img
+                    src={userInfo.profileImageUrl || defaultAvatarSrc}
+                    alt=""
+                  />
                 </div>
-                <p>{userInfo.firstName} {userInfo.lastName}</p>
+                <p>
+                  {userInfo.firstName} {userInfo.lastName}
+                </p>
               </li>
               <li>
                 <div className="menu1"></div>
@@ -584,8 +746,7 @@ function Trangchu() {
               <img
                 // src={"/Images/Icons/testa.jpg"}
                 // src={hthanh}
-                src={userInfo.profileImageUrl || defaultAvatarSrc} 
-
+                src={userInfo.profileImageUrl || defaultAvatarSrc}
                 className="avatarhomewriter"
               />
               <input
@@ -596,7 +757,6 @@ function Trangchu() {
                     ? `${userInfo.firstName} ${userInfo.lastName} ơi, bạn đang nghĩ gì thế?`
                     : "Đang tải..."
                 }
-                
                 onClick={() => setHienModal(true)}
               />
             </div>
@@ -616,36 +776,57 @@ function Trangchu() {
             </div>
           </div>
           <div className="postall">
-          {dsBaiViet.length > 0 ? (
+            {dsBaiViet.length > 0 ? (
               dsBaiViet.map((post) => (
-                <div key={post.id} className="postitem">
+                <div
+                  key={post.idPost || `default-${post.index || Math.random()}`}
+                  className="postitem"
+                >
                   <div className="postitemup">
                     <img
-                      src={post.user?.profileImageUrl || avatar}
+                      src={userInfo.profileImageUrl}
                       className="avatarpostitemup"
                     />
                     <div className="postitemupright">
-                      <p className="postname">{post.user ? `${post.user.firstName} ${post.user.lastName}` : 'Unknown User'}</p>
+                      <p className="postname">
+                        {/* {post.user
+                          ? `${post.user.firstName} ${post.user.lastName}`
+                          : "Unknown User"} */}
+                        {userInfo.firstName} {userInfo.lastName}
+                      </p>
                       <p className="postdate">
-                      {new Date(post.createAt).toLocaleDateString('vi-VN')}
+                        {/* {new Date(post.createAt).toLocaleDateString("vi-VN")} */}
+                        {(() => {
+                          const now = new Date();
+                          const postDate = new Date(post.createAt);
+                          const diffMs = now - postDate;
+                          const diffSeconds = Math.floor(diffMs / 1000);
+                          const diffMinutes = Math.floor(diffSeconds / 60);
+                          const diffHours = Math.floor(diffMinutes / 60);
+                          const diffDays = Math.floor(diffHours / 24);
+                          if (diffDays > 0) {
+                            return `${diffDays} ngày trước`;
+                          } else if (diffHours > 0) {
+                            return `${diffHours} giờ trước`;
+                          } else if (diffMinutes > 0) {
+                            return `${diffMinutes} phút trước`;
+                          } else {
+                            return `Vừa xong`;
+                          }
+                        })()}
                       </p>
                     </div>
                     <div className="postitemore">
-                      <img src={`/Images/Icons/more.svg`} alt="" onClick={() => setHienTest(true)}/>
+                      <img
+                        src={`/Images/Icons/more.svg`}
+                        alt=""
+                        onClick={() => setHienTest(true)}
+                      />
                     </div>
                   </div>
 
                   <div className="postinput">
-                  {post.content && post.content.split('\n').map((line, i) => (
-        <p key={i}>{line}</p>
-      ))}
-                    {/* {hienTest && (
-                <div className="postitemchucnangcover">
-                    <div className="postitemchucnangbody">
-                        
-                        </div>
-                </div>
-                  )} */}
+                    <p>{post.content}</p>
                   </div>
 
                   <div className="gachngang1"></div>
@@ -666,14 +847,11 @@ function Trangchu() {
                       <p>Chia sẻ</p>
                     </div>
                   </div>
-
-                 
                 </div>
               ))
             ) : (
               <p>Chưa có bài viết nào.</p>
             )}
-
           </div>
 
           <>
@@ -724,11 +902,12 @@ function Trangchu() {
                     <img
                       // src={"/Images/Icons/testa.jpg"}
                       // src={hthanh}
-                      src={userInfo.profileImageUrl || defaultAvatarSrc} 
-
+                      src={userInfo.profileImageUrl || defaultAvatarSrc}
                       style={{ width: 38, height: 38, borderRadius: "50%" }}
                     />
-                    <p>{userInfo.firstName} {userInfo.lastName}</p>
+                    <p>
+                      {userInfo.firstName} {userInfo.lastName}
+                    </p>
                   </div>
                 </div>
                 <div className="khungpicavatatrentatcatrang">
@@ -784,6 +963,55 @@ function Trangchu() {
               </div>
             </div>
           )}
+          <div className="HomeCenterPhaiAdvertisement">
+            <div className="HomeCenterPhaiAdvertisementTitle">
+              <p>Được tài trợ</p>
+            </div>
+            <div className="HomeCenterPhaiAdvertisements">
+              <a
+                href="https://www.oneesports.gg/mobile-legends/mlbb-x-naruto-skins/"
+                className="HomeCenterPhaiAdvertisement1cover"
+              >
+                <div className="HomeCenterPhaiAdvertisement1">
+                  <div className="HomeCenterPhaiAdvertisement1img">
+                    <img src={qc1} alt="" />
+                  </div>
+                  <div className="HomeCenterPhaiAdvertisement1title">
+                    <p className="HomeCenterPhaiAdvertisement1title1">
+                      Mobile Legends: Bang Bang
+                    </p>
+                    <p className="HomeCenterPhaiAdvertisement1title2">
+                      https://www.oneesports.gg/mobile-legends/mlbb-x-naruto-skins/
+                    </p>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="https://lienquan.garena.vn/chi-tiet-ban-cap-nhat-le-hoi-5v5-ngay-23-04-2025/"
+                className="HomeCenterPhaiAdvertisement1cover"
+              >
+                <div className="HomeCenterPhaiAdvertisement1">
+                  <div className="HomeCenterPhaiAdvertisement1img">
+                    <img src={qc2} alt="" />
+                  </div>
+                  <div className="HomeCenterPhaiAdvertisement1title">
+                    <p className="HomeCenterPhaiAdvertisement1title1">
+                      Arena of Valor
+                    </p>
+                    <p className="HomeCenterPhaiAdvertisement1title2">
+                      https://lienquan.garena.vn/chi-tiet-ban-<br></br>
+                      cap-nhat-le-hoi-5v5-ngay-23-04-2025/
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div className="gachngang"></div>
+            <div className="HomeCenterPhaiAdvertisementMess">
+            <p>Người liên hệ</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

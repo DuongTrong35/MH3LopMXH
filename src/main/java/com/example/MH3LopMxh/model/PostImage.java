@@ -18,12 +18,29 @@ public class PostImage {
     @JoinColumn(name = "id", unique = true)
     private Image image;
 
-    // Getters and Setters
+    public PostImage() {
+    }
+    public PostImage(Image image,Post p) {
+		super();
+		this.image = image;
+		this.post=p;
+	}
+
+	// Getters and Setters
+    
     public Post getPost() {
         return post;
     }
 
-    public void setPost(Post post) {
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setPost(Post post) {
         this.post = post;
     }
 

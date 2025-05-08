@@ -35,10 +35,32 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private Set<Interaction> interactions = new HashSet<>();
 
-    @OneToOne(mappedBy = "post")
+//    @OneToOne(cascade = CascadeType.PERSIST) // <-- quan trọng!
+//    @OneToOne(mappedBy = "post")
+    @OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
     private PostImage postImage;
 
-    // Getters and Setters
+    
+    public Post() {
+    }
+    public Post(Long idPost, String content, LocalDateTime createAt, LocalDateTime updateAt, boolean isActive) {
+		super();
+		this.idPost = idPost;
+		this.content = content;
+		this.createAt = createAt;
+		this.updateAt = updateAt;
+		this.isActive = isActive;
+	}
+    public Post(Long idPost, String content, LocalDateTime createAt, LocalDateTime updateAt, boolean isActive,PostImage pi) {
+		super();
+		this.idPost = idPost;
+		this.content = content;
+		this.createAt = createAt;
+		this.updateAt = updateAt;
+		this.isActive = isActive;
+		this.postImage=pi;
+	}
+	// Getters and Setters
     public Long getIdPost() {
         return idPost;
     }

@@ -86,4 +86,38 @@ public class PostService {
     public List<Post> searchPosts(String keyword) {
         return postRepository.searchPosts(keyword);
     }
+    
+    public void save(Post p) {
+    	 postRepository.save(p);
+    }
+    public PostUser savepersonpost(long idpost,long iduse) {
+        Optional<User> optionalUser = userRepository.findById(iduse);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            PostUser postUser = new PostUser();
+            postUser.setIdPost(idpost);
+            postUser.setUser(user);
+//            postUser.setPost(post);
+            return postUserRepository.save(postUser);
+        }else {
+            throw new RuntimeException("Không tìm thấy người dùng với ID: ");
+        }
+    }
+    
+//    public void save(Post p) {
+//   	 postRepository.save(p);
+//   }
+//   public PostUser savepersonpost(long idpost,long iduse) {
+//       Optional<User> optionalUser = userRepository.findById(iduse);
+//       if (optionalUser.isPresent()) {
+//           User user = optionalUser.get();
+//           PostUser postUser = new PostUser();
+//           postUser.setIdPost(idpost);
+//           postUser.setUser(user);
+////           postUser.setPost(post);
+//           return postUserRepository.save(postUser);
+//       }else {
+//           throw new RuntimeException("Không tìm thấy người dùng với ID: ");
+//       }
+//   }
 }

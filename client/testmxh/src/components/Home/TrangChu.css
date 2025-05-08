@@ -521,7 +521,7 @@ height: 50px;
     line-height: 60px;
     font-size: 20px;
     font-weight: 700;
-    margin-left: 16px;
+    margin-left: 180px;
 }
 .gachngang::before{
     content: '';
@@ -865,7 +865,7 @@ input[type="radio"] {
 
 .modaltitleback{
     margin-top: 12px;
-    margin-left: 16px;
+    margin-left: 150px;
     width: 36px;
     height: 36px;
     line-height: 20px;
@@ -997,3 +997,58 @@ input[type="radio"] {
     border-radius: 50%;
     background-color: #e2e5e9;
     cursor: pointer;}
+.HomeCenterPhaiAdvertisements{
+    width: 100%;
+    height: 325px;
+}
+.HomeCenterPhaiAdvertisement{
+    margin-top: 25px;
+}
+.HomeCenterPhaiAdvertisement1cover{
+    width: 100%;
+height: 131px;
+color: black;
+}
+.HomeCenterPhaiAdvertisement1{
+    /* margin-top: 15px; */
+    display: flex;
+}
+.HomeCenterPhaiAdvertisement1 .HomeCenterPhaiAdvertisement1img{
+    margin-left: 10px;
+    margin-top: 12px;
+    height: 131px!important;
+    width: 131px!important;
+}
+.HomeCenterPhaiAdvertisementTitle{
+    width: 300px;
+    height: 40px;
+    margin-left: 8px;
+}
+.HomeCenterPhaiAdvertisementTitle p{
+    margin-bottom: 0;
+}
+.HomeCenterPhaiAdvertisement1 .HomeCenterPhaiAdvertisement1img img{
+    height: 131px!important;
+    width: 131px!important;
+}
+.HomeCenterPhaiAdvertisement1{
+    height: 160px;
+}
+.HomeCenterPhaiAdvertisement1title1{
+    font-size: 15px;
+    margin-bottom: 0;
+    margin-left: 12px;
+    margin-top: 36px;
+    font-weight: 700;
+}
+.HomeCenterPhaiAdvertisement1title2{
+    font-size: 11px;
+    margin-bottom: 0;
+    margin-left: 12px;
+    color: #5c5e62!important;
+}
+
+.HomeCenterPhaiAdvertisement1:hover{
+    background-color:#DDDDDD;
+    color: black;
+}
