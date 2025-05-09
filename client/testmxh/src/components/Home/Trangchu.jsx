@@ -124,6 +124,7 @@ function Trangchu() {
 
   const [noidung, setNoidung] = useState("");
   const [dsBaiViet, setDsBaiViet] = useState([]);
+  const [dsMesstc, setdsMesstc] = useState([]);
   // useEffect(() => {
   //   // Gọi API lấy danh sách bài viết từ database
   //   fetch("/poststhu")
@@ -148,6 +149,22 @@ function Trangchu() {
     };
     fetchPosts();
   }, []);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/profile/${userId}`
+        );
+        // const response = await axios.get("http://localhost:8080/post"); // nhớ đúng URL backend bạn nhé
+        setDsBaiViet(response.data.posts); // response.data.posts là mảng bài viết
+      } catch (error) {
+        console.error("Lỗi khi lấy danh sách bài viết:", error);
+      }
+    };
+    fetchPosts();
+  }, []);
+
   // const handleDangBai = async () => {
   //   if (!noidung.trim()) return;
   //   // const linkanh=anhDaTai;
@@ -1010,6 +1027,15 @@ function Trangchu() {
             <div className="gachngang"></div>
             <div className="HomeCenterPhaiAdvertisementMess">
             <p>Người liên hệ</p>
+            {dsMesstc.length > 0 ? (
+              dsMesstc.map((post) => (
+                <div className="HomeCenterPhaiAdvertisementShowMess">
+
+                </div>
+              ))
+            ) : (
+              <p>Chưa có bài viết nào.</p>
+            )}
             </div>
           </div>
         </div>

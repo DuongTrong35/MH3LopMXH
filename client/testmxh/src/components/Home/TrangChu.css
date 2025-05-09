@@ -193,7 +193,7 @@ html, body, #root {
 }
 
 .HomeCenterGiua .post-box {
-    width: 650px;
+    width: 668px;
     margin-top: 15px;
     background: white;
     padding: 10px;
@@ -1051,4 +1051,8 @@ color: black;
 .HomeCenterPhaiAdvertisement1:hover{
     background-color:#DDDDDD;
     color: black;
+}
+
+.HomeCenterPhaiAdvertisementMess{
+    margin-top: 10px;
 }
